@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * This class provides various Skill Builder 5 - Array
  * exercises.
@@ -17,8 +19,17 @@ public class SkillBuilder5
      */
     public static double[] prefixAverage(double[] data)
     {
-        //TODO: replace this line with your code.
-        return null;
+        //TODO: replace this line with your code
+        double sum = 0;
+        double[] newArray = new double[data.length];
+        int counter = 0;
+        for (double datum : data){
+            sum += datum;
+            double doubVal = sum / (counter + 1);
+            newArray[counter] = doubVal;
+            counter++;
+        }
+        return newArray;
     }
 
     /**
@@ -32,7 +43,10 @@ public class SkillBuilder5
     public static int  indexOf(int searchValue, int[] anArray)
     {
         //TODO: replace this line with your code.
-        return 0;
+        for(int i = 0; i < anArray.length; i++){
+            if(anArray[i] == searchValue) return i;
+        }
+        return -1;
     }
 
     /**
@@ -46,7 +60,9 @@ public class SkillBuilder5
     public static int  indexOf(String s, String[] anArray)
     {
         //TODO: replace this line with your code.
-        return 0;
+        for(int c = 0;c < anArray.length;c++) if (Objects.equals(anArray[c], s)) return c;
+        return -1;
+
     }
 
     /**
@@ -59,7 +75,17 @@ public class SkillBuilder5
     public static String[] remove(String s, String[] anArray)
     {
         // add your code here
-        return null;
+        int t = 0;
+        int r = 0;
+        for (String x : anArray) if(x != s) t++;
+        String[] newArr =  new String[t];
+        for(String x : anArray){
+            if(!Objects.equals(x, s)){
+                newArr[r] = x;
+                r++;
+            }
+        }
+        return newArr;
     }
 
     /**
@@ -69,5 +95,14 @@ public class SkillBuilder5
     public static void reverse(int[] anArray)
     {
         // add your code here
+        int[] newArray = new int[anArray.length];
+        for ( int b = 0;b < anArray.length;b++) {
+            newArray[b] = anArray[b];
+        }
+        int track = 0;
+        for (int r = anArray.length - 1; r >= 0;r--) {
+            anArray[r] = newArray[track];
+            track++;
+        }
     }
 }
